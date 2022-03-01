@@ -36,36 +36,26 @@ export default {
 
 <style scoped>
 .table-wrapper {
-  box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
-  width: 70%;
   margin: 10px 0px;
+  box-shadow: 10px 35px 50px rgba(0, 0, 0, 0.4);
 }
 
 .fl-table {
-  border-radius: 5px;
-  font-size: 1.2rem;
-  font-weight: normal;
-  border: none;
+  font-size: 1rem;
   border-collapse: collapse;
   width: 100%;
-  max-width: 100%;
   white-space: nowrap;
   background-color: white;
 }
 
-.fl-table td,
+.fl-table tr,
 .fl-table th {
   text-align: center;
-  padding: 8px 0px;
-}
-
-.fl-table td {
-  border-right: 1px solid #f8f8f8;
-  font-size: 1.2rem;
+  padding: 5px;
 }
 
 .fl-table thead th {
-  color: white;
-  background: black;
+  color: #ffffff;
+  background: #05194e;
 }
 </style>

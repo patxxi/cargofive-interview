@@ -20,7 +20,6 @@ export default {
   width: 100%;
   flex-direction: column;
   min-height: 100vh;
-  border: red solid 2px;
   align-items: center;
   justify-content: space-between;
 }

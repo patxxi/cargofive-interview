@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h1>Header</h1>
+    <img src="../assets/logo.svg" alt="" />
   </header>
 </template>
 
@@ -16,6 +16,14 @@ export default {
 .header {
   display: flex;
   width: 100%;
+  height: 80px;
   justify-content: center;
+  align-items: center;
+  margin: 0px 0px 10px 0px;
+  background-color: white;
+}
+
+.header img {
+  height: 50px;
 }
 </style>
