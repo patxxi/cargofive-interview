@@ -1,6 +1,10 @@
 <template>
   <footer class="footer">
-    <h1>Footer</h1>
+    <div class="footer-info">
+      <a href="https://github.com/patxxi/cargofive-interview">Github</a>
+      <span>Francisco Ruiz</span>
+      <a href="https://cargofive.com/es/">Cargo Five</a>
+    </div>
   </footer>
 </template>
 
@@ -21,5 +25,14 @@ export default {
   align-items: center;
   margin: 10px 0px 0px 0px;
   background-color: white;
+}
+
+.footer .footer-info a,
+span {
+  text-decoration: none;
+  color: black;
+  margin: 0px 10px;
+  font-size: 1.2rem;
+  font-weight: bolder;
 }
 </style>
