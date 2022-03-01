@@ -1,47 +1,32 @@
 <template>
-  <basic-table head="Puertos" :body="array" :headers="headers"></basic-table>
+  <basic-table
+    head="Puertos"
+    v-if="ports.body"
+    :body="ports.body"
+    :headers="headers"
+  ></basic-table>
+
+  <h1 v-else>Loading...</h1>
 </template>
 
 <script>
+import { reactive, onBeforeMount } from "vue";
 import BasicTable from "../components/Table.vue";
+import { getPorts } from "../utils/api";
 export default {
   name: "HomeView",
   components: { BasicTable },
   setup() {
-    const array = [
-      {
-        id: 742,
-        name: "Abu Dhabi, AEAUH",
-        country: "United Arab Emirates",
-        continent: "AS",
-        coordinates: "24.4821 54.502135",
-      },
-      {
-        id: 743,
-        name: "Ajman, AEAJM",
-        country: "United Arab Emirates",
-        continent: "AS",
-        coordinates: "25.41093 55.4573",
-      },
-      {
-        id: 744,
-        name: "Fujairah, AEFJR",
-        country: "United Arab Emirates",
-        continent: "AS",
-        coordinates: "25.12769 56.356",
-      },
-      {
-        id: 745,
-        name: "Jebel Ali, AEJEA",
-        country: "United Arab Emirates",
-        continent: "AS",
-        coordinates: "25.00063 55.0493",
-      },
-    ];
+    const ports = reactive({ body: null });
+
+    onBeforeMount(async () => {
+      const { data } = await getPorts();
+      ports.body = data.data;
+    });
 
     const headers = ["Id", "Name", "Country", "Continent", "Coordinates"];
 
-    return { array, headers };
+    return { ports, headers };
   },
 };
 </script>

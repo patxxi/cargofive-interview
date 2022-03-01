@@ -21,25 +21,24 @@
 </template>
 
 <script>
-import { ref } from "vue";
 export default {
   name: "BasicTable",
   props: ["headers", "head", "body"],
   setup(props) {
-    const tableHeaders = ref(props.headers);
-    const tableHead = ref(props.head);
-    const tableBody = ref(props.body);
-
-    return { tableHeaders, tableHead, tableBody };
+    return {
+      tableHeaders: props.headers,
+      tableHead: props.head,
+      tableBody: props.body,
+    };
   },
 };
 </script>
 
 <style scoped>
 .table-wrapper {
-  margin: 10px 70px 70px;
   box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
   width: 70%;
+  margin: 10px 0px;
 }
 
 .fl-table {
@@ -57,12 +56,12 @@ export default {
 .fl-table td,
 .fl-table th {
   text-align: center;
-  padding: 8px;
+  padding: 8px 0px;
 }
 
 .fl-table td {
   border-right: 1px solid #f8f8f8;
-  font-size: 12px;
+  font-size: 1.2rem;
 }
 
 .fl-table thead th {
