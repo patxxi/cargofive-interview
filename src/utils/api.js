@@ -1,5 +1,5 @@
-const getPorts = async () => {
-  const url = "http://apitest.cargofive.com/api/ports";
+const getPorts = async (page = 1) => {
+  const url = `http://apitest.cargofive.com/api/ports?page=${page}`;
 
   try {
     const response = await fetch(url);

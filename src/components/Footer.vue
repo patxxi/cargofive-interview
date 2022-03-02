@@ -3,7 +3,7 @@
     <div class="footer-info">
       <a href="https://github.com/patxxi/cargofive-interview">Github</a>
       <span>Francisco Ruiz</span>
-      <a href="https://cargofive.com/es/">Cargo Five</a>
+      <a href="https://cargofive.com/es/">Cargofive</a>
     </div>
   </footer>
 </template>
