@@ -38,13 +38,13 @@ export default {
 .table-wrapper {
   margin: 10px 0px;
   box-shadow: 10px 35px 50px rgba(0, 0, 0, 0.4);
+  width: calc(100% - 50px);
 }
 
 .fl-table {
   font-size: 1rem;
   border-collapse: collapse;
   width: 100%;
-  white-space: nowrap;
   background-color: white;
 }
 

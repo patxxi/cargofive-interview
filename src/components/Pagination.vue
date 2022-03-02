@@ -32,8 +32,8 @@
         class="pagination__button pagination__button--next"
         @click="
           setActive(paginationLimit);
-          $emit('changePage', 25);
-        "
+          // eslint-disable-next-line prettier/prettier
+          $emit('changePage', 25);"
       >
         &raquo;
       </button>
@@ -78,6 +78,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .pagination {

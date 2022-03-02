@@ -5,12 +5,19 @@
     @changePage="updateTable"
   >
     <template #table>
+      <Filter
+        :data="ports.data"
+        :filterKeys="headers"
+        @handleFilter="filterTable"
+        @handleClean="cleanFilter"
+      ></Filter>
       <basic-table
         head="Puertos"
-        :body="ports.data"
+        :body="filteredPorts"
         :headers="headers"
-        :key="ports.data"
-      ></basic-table>
+        :key="filteredPorts"
+      >
+      </basic-table>
     </template>
   </Pagination>
 
@@ -21,16 +28,19 @@
 import { ref, onBeforeMount } from "vue";
 import BasicTable from "../components/Table.vue";
 import Pagination from "../components/Pagination.vue";
+import Filter from "../components/Filter.vue";
 import { getPorts } from "../utils/api";
 export default {
   name: "HomeView",
-  components: { BasicTable, Pagination },
+  components: { BasicTable, Pagination, Filter },
   setup() {
     const ports = ref({});
+    const filteredPorts = ref([]);
 
     const updateTable = async (index) => {
-      const { data } = await getPorts(index);
-      ports.value = { ...data };
+      const request = await getPorts(index);
+      ports.value = { ...request };
+      filteredPorts.value = [...ports.value.data];
       window.scrollTo(0, 0);
     };
 
@@ -38,9 +48,30 @@ export default {
       await updateTable();
     });
 
-    const headers = ["Id", "Name", "Country", "Continent", "Coordinates"];
+    const filterTable = (query) => {
+      for (let param in query) {
+        if (query[param]) {
+          filteredPorts.value = filteredPorts.value.filter(
+            (port) => port[param] === query[param]
+          );
+        }
+      }
+    };
 
-    return { ports, headers, updateTable };
+    const cleanFilter = () => {
+      filteredPorts.value = [...ports.value.data];
+    };
+
+    const headers = ["id", "name", "country", "continent", "Coordinates"];
+
+    return {
+      ports,
+      headers,
+      updateTable,
+      filterTable,
+      filteredPorts,
+      cleanFilter,
+    };
   },
 };
 </script>

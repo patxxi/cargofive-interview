@@ -5,10 +5,7 @@ const getPorts = async (page = 1) => {
     const response = await fetch(url);
     const data = await response.json();
 
-    console.log("data", data);
-    console.log("response", response);
-
-    return { data, response };
+    return data;
   } catch (e) {
     console.log(e);
   }
