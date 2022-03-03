@@ -1,43 +1,49 @@
 <template>
-  <Pagination
+  <app-pagination
     v-if="ports.data"
     :lastPage="ports.meta.last_page"
     @changePage="updateTable"
   >
     <template #table>
-      <Filter
+      <app-filter
         :data="ports.data"
         :filterKeys="headers"
         @handleFilter="filterTable"
         @handleClean="cleanFilter"
-      ></Filter>
-      <basic-table
+      ></app-filter>
+      <app-table
         head="Puertos"
         :body="filteredPorts"
         :headers="headers"
         :key="filteredPorts"
       >
-      </basic-table>
+      </app-table>
     </template>
-  </Pagination>
+  </app-pagination>
 
   <h1 v-else>Loading...</h1>
 </template>
 
 <script>
 import { ref, onBeforeMount } from "vue";
-import BasicTable from "../components/Table.vue";
-import Pagination from "../components/Pagination.vue";
-import Filter from "../components/Filter.vue";
+import AppTable from "../components/Table.vue";
+import AppPagination from "../components/Pagination.vue";
+import AppFilter from "../components/Filter.vue";
 import { getPorts } from "../utils/api";
 export default {
   name: "HomeView",
-  components: { BasicTable, Pagination, Filter },
+  components: { AppTable, AppPagination, AppFilter },
   setup() {
     const ports = ref({});
     const filteredPorts = ref([]);
 
     const updateTable = async (index) => {
+      /**
+       *  Update the table when change page from pagination.
+       *  it take the index of the pagination active page, for request this info from API
+       *
+       * @param (Number) index The index of the current page in the pagination
+       */
       const request = await getPorts(index);
       ports.value = { ...request };
       filteredPorts.value = [...ports.value.data];
@@ -45,10 +51,21 @@ export default {
     };
 
     onBeforeMount(async () => {
+      /**
+       * First request to the API for initial data, before the component is mount
+       */
       await updateTable();
     });
 
     const filterTable = (query) => {
+      /**
+       * Execute the filters over the array of ports to show them.
+       * It iterate through the query, and if it's not null, compare
+       * the values of the query with every item in ports array.
+       *
+       * @param (Object) query A object key-value with the fields which gonna filter and their values
+       *
+       */
       for (let param in query) {
         if (query[param]) {
           filteredPorts.value = filteredPorts.value.filter(
@@ -59,6 +76,10 @@ export default {
     };
 
     const cleanFilter = () => {
+      /**
+       * Clean and re start the data for filteredPorts.
+       */
+
       filteredPorts.value = [...ports.value.data];
     };
 

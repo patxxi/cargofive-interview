@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "BasicTable",
+  name: "AppTable",
   props: ["headers", "head", "body"],
   setup(props) {
     return {

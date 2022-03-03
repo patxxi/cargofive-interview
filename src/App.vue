@@ -1,7 +1,7 @@
 <template>
-  <layout>
+  <app-layout>
     <template #header>
-      <Header></Header>
+      <app-header></app-header>
     </template>
 
     <template #content>
@@ -9,21 +9,21 @@
     </template>
 
     <template #footer>
-      <Footer></Footer>
+      <app-footer></app-footer>
     </template>
-  </layout>
+  </app-layout>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import Footer from "./components/Footer.vue";
-import Layout from "./components/Layout.vue";
+import AppHeader from "./components/Header.vue";
+import AppFooter from "./components/Footer.vue";
+import AppLayout from "./components/Layout.vue";
 export default {
   setup() {},
   components: {
-    Header,
-    Footer,
-    Layout,
+    AppHeader,
+    AppFooter,
+    AppLayout,
   },
 };
 </script>

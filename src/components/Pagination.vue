@@ -44,18 +44,29 @@
 <script>
 import { ref, computed } from "vue";
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: "Pagination",
+  name: "AppPagination",
   props: ["lastPage", "double"],
   setup(props) {
     const paginationLimit = ref(props.lastPage);
     const active = ref(1);
 
     const setActive = (index) => {
+      /**
+       * Update and set the index of the current page in pagination.
+       * @param (Number) index The index of the page where the user is.
+       */
+
       active.value = index;
     };
 
     const pages = computed(() => {
+      /**
+       * Computed property for update the list of pages the user can see
+       *  in a range from (active - 2, active + 4) based on the current page
+       *
+       * @return (Array) range Returns the array of the visible pages
+       */
+
       const range = [];
 
       for (let i = active.value - 2; i <= active.value + 4; i++) {

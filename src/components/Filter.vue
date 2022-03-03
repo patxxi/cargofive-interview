@@ -20,8 +20,8 @@
       <button
         @click="
           cleanFilter();
-          $emit('handleClean');
-        "
+          // eslint-disable-next-line prettier/prettier
+          $emit('handleClean');"
       >
         Clear
       </button>
@@ -32,20 +32,33 @@
 <script>
 import { ref } from "vue";
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: "Filter",
+  name: "AppFilter",
   props: ["data", "filterKeys"],
   setup(props) {
     const query = ref({});
+
     const getUniqueValues = (key) => {
+      /**
+       * It methods use Sets to get the unique values of the current page for
+       * the options in select input on template. Simply iterate through
+       * the data and try to add the value in Set.
+       *
+       * @param (String) key The key of the inputs fields
+       *
+       * @return (Array) uniqueValues The unique values in data for that field
+       */
       const uniqueValues = new Set();
       props.data.forEach((element) => {
-        uniqueValues.add(element[key.toLowerCase()]);
+        uniqueValues.add(element[key]);
       });
       return uniqueValues;
     };
 
     const cleanFilter = () => {
+      /**
+       * Clear the query object for the filter
+       */
+
       query.value = {};
     };
 
