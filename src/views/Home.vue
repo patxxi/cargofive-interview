@@ -10,6 +10,7 @@
         :filterKeys="headers"
         @handleFilter="filterTable"
         @handleClean="cleanFilter"
+        :key="ports.data"
       ></app-filter>
       <app-table
         head="Puertos"
