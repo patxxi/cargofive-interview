@@ -32,8 +32,8 @@
         class="pagination__button pagination__button--next"
         @click="
           setActive(paginationLimit);
-          // eslint-disable-next-line prettier/prettier
-          $emit('changePage', 25);"
+          $emit('changePage', 25);
+        "
       >
         &raquo;
       </button>

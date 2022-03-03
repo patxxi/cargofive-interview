@@ -20,8 +20,8 @@
       <button
         @click="
           cleanFilter();
-          // eslint-disable-next-line prettier/prettier
-          $emit('handleClean');"
+          $emit('handleClean');
+        "
       >
         Clear
       </button>
