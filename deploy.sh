@@ -13,7 +13,7 @@ git init
 git add -A
 git commit -m 'deploy'
 
-# if you are deploying to https://<USERNAME>.github.io/<REPO>
+
 git push -f git@github.com:patxxi/cargofive-interview.git master:gh-pages
 
 cd -
