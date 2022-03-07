@@ -11,4 +11,5 @@ npm run build
 npm run lint
 
 ## Extra notes
-It have no possible deploy in some host site (like netlify or github pages) for "Mixed Error: This request has been blocked; the content must be served over HTTPS". This happend when the host site (this project) is hosted in HTTPS while the API is in HTTP
+Url for gh pages deployment
+https://patxxi.github.io/cargofive-interview/#/
